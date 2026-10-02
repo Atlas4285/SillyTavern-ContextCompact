@@ -1,12 +1,16 @@
 {
-    "display_name": "Template Extension",
+    "display_name": "ContextCompact",
     "loading_order": 1,
     "requires": [],
     "optional": [],
     "js": "dist/index.js",
+    "generate_interceptor": "contextCompactGenerateInterceptor",
     "css": "",
-    "author": "Cohee1207",
+    "author": "Atlas4285",
     "version": "1.0.0",
-    "homePage": "https://github.com/SillyTavern/Extension-WebpackTemplate",
-    "auto_update": true
+    "homePage": "https://github.com/Atlas4285/SillyTavern-ContextCompact",
+    "auto_update": true,
+    "i18n": {
+        "zh-cn": "i18n/zh-cn.json"
+    }
 }

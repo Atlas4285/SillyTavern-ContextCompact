@@ -1,0 +1,414 @@
+<div id="contextcompact_settings" class="contextcompact-settings">
+    <div class="inline-drawer">
+        <div class="inline-drawer-toggle inline-drawer-header">
+            <b>ContextCompact</b>
+            <div
+                class="inline-drawer-icon fa-solid fa-circle-chevron-down down"
+            ></div>
+        </div>
+        <div class="inline-drawer-content">
+            <label class="checkbox_label" for="contextcompact_enabled">
+                <input id="contextcompact_enabled" type="checkbox" />
+                <span data-i18n="contextcompact.settings.enabled"
+                    >Enable memory compaction</span
+                >
+            </label>
+
+            <div class="contextcompact-grid">
+                <label
+                    for="contextcompact_mode"
+                    data-i18n="contextcompact.settings.compaction_timing"
+                    >Compaction timing</label
+                >
+                <select id="contextcompact_mode" class="text_pole">
+                    <option
+                        value="before_send"
+                        data-i18n="contextcompact.settings.before_send"
+                    >
+                        Automatically before sending
+                    </option>
+                    <option
+                        value="after_reply"
+                        data-i18n="contextcompact.settings.after_reply"
+                    >
+                        Automatically after a reply
+                    </option>
+                    <option
+                        value="manual"
+                        data-i18n="contextcompact.settings.manual_only"
+                    >
+                        Manual only
+                    </option>
+                </select>
+
+                <label
+                    for="contextcompact_trigger_mode"
+                    data-i18n="contextcompact.settings.trigger_mode"
+                    >Trigger mode</label
+                >
+                <select id="contextcompact_trigger_mode" class="text_pole">
+                    <option
+                        value="ratio"
+                        data-i18n="contextcompact.settings.trigger_ratio_mode"
+                    >
+                        By ratio
+                    </option>
+                    <option
+                        value="tokens"
+                        data-i18n="contextcompact.settings.trigger_tokens_mode"
+                    >
+                        By completed context tokens
+                    </option>
+                    <option
+                        value="rounds"
+                        data-i18n="contextcompact.settings.trigger_rounds_mode"
+                    >
+                        By rounds (user messages)
+                    </option>
+                </select>
+
+                <label
+                    id="contextcompact_trigger_ratio_label"
+                    for="contextcompact_trigger"
+                    data-i18n="contextcompact.settings.trigger_ratio"
+                    >Trigger ratio</label
+                >
+                <input
+                    id="contextcompact_trigger"
+                    class="text_pole"
+                    type="number"
+                    min="0.2"
+                    max="0.9"
+                    step="0.05"
+                />
+
+                <label
+                    id="contextcompact_trigger_tokens_label"
+                    for="contextcompact_trigger_tokens"
+                    data-i18n="contextcompact.settings.trigger_tokens"
+                    >Completed context token threshold</label
+                >
+                <input
+                    id="contextcompact_trigger_tokens"
+                    class="text_pole"
+                    type="number"
+                    min="256"
+                    max="1000000"
+                    step="1"
+                />
+
+                <label
+                    id="contextcompact_trigger_rounds_label"
+                    for="contextcompact_trigger_rounds"
+                    data-i18n="contextcompact.settings.trigger_rounds"
+                    >Rounds per compaction</label
+                >
+                <input
+                    id="contextcompact_trigger_rounds"
+                    class="text_pole"
+                    type="number"
+                    min="1"
+                    max="1000"
+                    step="1"
+                />
+
+                <label
+                    for="contextcompact_recent"
+                    data-i18n="contextcompact.settings.recent_rounds"
+                    >Recent user turns to keep</label
+                >
+                <input
+                    id="contextcompact_recent"
+                    class="text_pole"
+                    type="number"
+                    min="1"
+                    max="100"
+                    step="1"
+                />
+
+                <label
+                    for="contextcompact_target"
+                    data-i18n="contextcompact.settings.target_tokens"
+                    >Target memory tokens</label
+                >
+                <input
+                    id="contextcompact_target"
+                    class="text_pole"
+                    type="number"
+                    min="100"
+                    max="8000"
+                    step="1"
+                />
+
+                <label
+                    for="contextcompact_language"
+                    data-i18n="contextcompact.settings.summary_language"
+                    >Summary language</label
+                >
+                <select id="contextcompact_language" class="text_pole"></select>
+
+                <label
+                    for="contextcompact_model_select"
+                    data-i18n="contextcompact.settings.summary_model"
+                    >Summary model</label
+                >
+                <select
+                    id="contextcompact_model_select"
+                    class="text_pole"
+                ></select>
+            </div>
+            <p
+                id="contextcompact_model_status"
+                class="contextcompact-status"
+                role="status"
+            ></p>
+            <div class="contextcompact-prompt-setting">
+                <div class="contextcompact-prompt-heading">
+                    <div class="contextcompact-label-with-info">
+                        <label
+                            for="contextcompact_summary_prompt"
+                            data-i18n="contextcompact.settings.summary_prompt"
+                            >Compaction prompt</label
+                        >
+                        <span
+                            class="opacity50p fa-solid fa-circle-info"
+                            role="img"
+                            tabindex="0"
+                            title="The active system prompt, previous memory, and messages are sent separately as data."
+                            data-i18n="[title]contextcompact.settings.summary_prompt_help"
+                        ></span>
+                    </div>
+                    <label
+                        class="checkbox_label"
+                        for="contextcompact_prompt_use_default"
+                    >
+                        <input
+                            id="contextcompact_prompt_use_default"
+                            type="checkbox"
+                        />
+                        <span
+                            data-i18n="contextcompact.settings.use_default_prompt"
+                            >Use localized default</span
+                        >
+                    </label>
+                </div>
+                <textarea
+                    id="contextcompact_summary_prompt"
+                    class="text_pole"
+                    rows="10"
+                    maxlength="10000"
+                    spellcheck="false"
+                ></textarea>
+                <small
+                    data-i18n="contextcompact.settings.summary_prompt_placeholders"
+                    >Available placeholders: {{targetTokens}},
+                    {{languageInstruction}}.</small
+                >
+            </div>
+            <div class="contextcompact-prompt-setting">
+                <div class="contextcompact-prompt-heading">
+                    <div class="contextcompact-label-with-info">
+                        <label
+                            for="contextcompact_injection_prompt"
+                            data-i18n="contextcompact.settings.injection_prompt"
+                            >Memory injection prompt</label
+                        >
+                        <span
+                            class="opacity50p fa-solid fa-circle-info"
+                            role="img"
+                            tabindex="0"
+                            title="Use {{memory}} to place the saved memory JSON. Without it, the JSON is appended after the prompt."
+                            data-i18n="[title]contextcompact.settings.injection_prompt_help"
+                        ></span>
+                    </div>
+                    <label
+                        class="checkbox_label"
+                        for="contextcompact_injection_prompt_use_default"
+                    >
+                        <input
+                            id="contextcompact_injection_prompt_use_default"
+                            type="checkbox"
+                        />
+                        <span
+                            data-i18n="contextcompact.settings.use_default_prompt"
+                            >Use localized default</span
+                        >
+                    </label>
+                </div>
+                <textarea
+                    id="contextcompact_injection_prompt"
+                    class="text_pole"
+                    rows="4"
+                    maxlength="10000"
+                    spellcheck="false"
+                ></textarea>
+                <small
+                    data-i18n="contextcompact.settings.injection_prompt_placeholders"
+                    >Available placeholder: {{memory}}.</small
+                >
+            </div>
+            <div class="contextcompact-save-row">
+                <button
+                    id="contextcompact_save_settings"
+                    class="menu_button contextcompact-save-button"
+                    type="button"
+                    data-i18n="contextcompact.settings.save"
+                >
+                    Save settings
+                </button>
+                <p
+                    id="contextcompact_settings_feedback"
+                    class="contextcompact-status"
+                    role="status"
+                ></p>
+            </div>
+
+            <hr />
+            <div class="contextcompact-memory-heading">
+                <h4 data-i18n="contextcompact.memory.heading">
+                    Current chat memory
+                </h4>
+                <span
+                    id="contextcompact_memory_token_count"
+                    class="contextcompact-memory-token-count"
+                    hidden
+                ></span>
+            </div>
+            <p
+                id="contextcompact_memory_status"
+                class="contextcompact-status"
+                role="status"
+            ></p>
+            <button
+                id="contextcompact_toggle_view"
+                class="menu_button contextcompact-view-toggle"
+                type="button"
+                hidden
+            >
+                Show JSON
+            </button>
+            <div
+                id="contextcompact_memory_cards"
+                class="contextcompact-memory-cards"
+                hidden
+            >
+                <section
+                    class="contextcompact-memory-card contextcompact-memory-situation"
+                >
+                    <h5 data-i18n="contextcompact.memory.current_situation">
+                        Current situation
+                    </h5>
+                    <textarea
+                        id="contextcompact_current_situation"
+                        class="text_pole"
+                        rows="3"
+                        spellcheck="false"
+                    ></textarea>
+                </section>
+                <div class="contextcompact-memory-card-grid">
+                    <section class="contextcompact-memory-card">
+                        <h5 data-i18n="contextcompact.memory.important_events">
+                            Important events
+                        </h5>
+                        <textarea
+                            id="contextcompact_important_events"
+                            class="text_pole"
+                            rows="5"
+                            spellcheck="false"
+                        ></textarea>
+                    </section>
+                    <section class="contextcompact-memory-card">
+                        <h5 data-i18n="contextcompact.memory.established_facts">
+                            Established facts
+                        </h5>
+                        <textarea
+                            id="contextcompact_established_facts"
+                            class="text_pole"
+                            rows="5"
+                            spellcheck="false"
+                        ></textarea>
+                    </section>
+                    <section class="contextcompact-memory-card">
+                        <h5 data-i18n="contextcompact.memory.relationships">
+                            Relationships
+                        </h5>
+                        <textarea
+                            id="contextcompact_relationships"
+                            class="text_pole"
+                            rows="5"
+                            spellcheck="false"
+                        ></textarea>
+                    </section>
+                    <section class="contextcompact-memory-card">
+                        <h5 data-i18n="contextcompact.memory.open_threads">
+                            Open threads
+                        </h5>
+                        <textarea
+                            id="contextcompact_open_threads"
+                            class="text_pole"
+                            rows="5"
+                            spellcheck="false"
+                        ></textarea>
+                    </section>
+                </div>
+            </div>
+            <div id="contextcompact_memory_json_view" hidden>
+                <label
+                    for="contextcompact_memory_json"
+                    data-i18n="contextcompact.memory.json_label"
+                    >Structured memory JSON</label
+                >
+                <textarea
+                    id="contextcompact_memory_json"
+                    class="text_pole"
+                    rows="12"
+                    spellcheck="false"
+                ></textarea>
+            </div>
+            <div class="contextcompact-actions">
+                <button
+                    id="contextcompact_refresh"
+                    class="menu_button"
+                    type="button"
+                    data-i18n="contextcompact.memory.refresh"
+                >
+                    Refresh
+                </button>
+                <button
+                    id="contextcompact_save_memory"
+                    class="menu_button"
+                    type="button"
+                    data-i18n="contextcompact.memory.save_edit"
+                >
+                    Save edit
+                </button>
+                <button
+                    id="contextcompact_compact"
+                    class="menu_button"
+                    type="button"
+                    data-i18n="contextcompact.memory.compact_now"
+                >
+                    Compact now
+                </button>
+            </div>
+            <div class="contextcompact-actions">
+                <button
+                    id="contextcompact_rebuild"
+                    class="menu_button"
+                    type="button"
+                    data-i18n="contextcompact.memory.rebuild"
+                >
+                    Rebuild from chat
+                </button>
+                <button
+                    id="contextcompact_clear"
+                    class="menu_button"
+                    type="button"
+                    data-i18n="contextcompact.memory.clear"
+                >
+                    Clear memory
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

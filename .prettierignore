@@ -1,0 +1,7 @@
+dist/
+package-lock.json
+*.js
+*.mjs
+*.cjs
+*.ts
+*.tsx

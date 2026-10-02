@@ -1,7 +1,13 @@
-import './style.css';
-import message from './index.html';
+import "./ui/settings.css";
+import { MODULE_NAME } from "./constants";
+import { initializeGenerationInterceptor } from "./infrastructure/generation-interceptor";
+import { getSettings } from "./infrastructure/settings-store";
+import { initializeSettingsPanel } from "./ui/settings";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const { Popup } = (globalThis as any).SillyTavern.getContext();
-
-Popup.show.text(message);
+initializeGenerationInterceptor();
+const { eventSource, eventTypes } = SillyTavern.getContext();
+eventSource.on(eventTypes.APP_INITIALIZED, () => {
+    getSettings();
+    initializeSettingsPanel();
+});
+console.log(`[${MODULE_NAME}] Extension loaded`);

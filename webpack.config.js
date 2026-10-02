@@ -1,32 +1,33 @@
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import TerserPlugin from 'terser-webpack-plugin';
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import TerserPlugin from "terser-webpack-plugin";
 
-const __dirname = import.meta.dirname ?? path.dirname(fileURLToPath(import.meta.url));
+const __dirname =
+    import.meta.dirname ?? path.dirname(fileURLToPath(import.meta.url));
 
 export default {
-    entry: path.join(__dirname, 'src/index.ts'),
+    entry: path.join(__dirname, "src/index.ts"),
     output: {
-        path: path.join(__dirname, 'dist/'),
-        filename: 'index.js',
+        path: path.join(__dirname, "dist/"),
+        filename: "index.js",
     },
     resolve: {
-        extensions: ['.ts', '.js'],
+        extensions: [".ts", ".js"],
     },
     module: {
         rules: [
             {
                 test: /\.ts$/,
-                use: 'ts-loader',
+                use: "ts-loader",
                 exclude: /node_modules/,
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
+                use: ["style-loader", "css-loader"],
             },
             {
                 test: /\.html$/,
-                use: { loader: 'html-loader' },
+                use: { loader: "html-loader" },
             },
         ],
     },

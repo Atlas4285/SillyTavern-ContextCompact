@@ -1,0 +1,178 @@
+.contextcompact-settings .inline-drawer-content {
+    padding: 0.6em;
+}
+
+#send_but.contextcompact-send-locked {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.contextcompact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.25em;
+    margin: 0.8em 0;
+}
+
+.contextcompact-grid > label {
+    white-space: nowrap;
+}
+
+.contextcompact-grid > label:not(:first-child) {
+    margin-top: 0.55em;
+}
+
+.contextcompact-grid > .text_pole {
+    margin: 0;
+}
+
+.contextcompact-grid input,
+.contextcompact-grid select,
+.contextcompact-settings textarea {
+    width: 100%;
+    min-width: 0;
+    background-color: var(--black30a);
+    color: var(--SmartThemeBodyColor);
+    border-color: var(--SmartThemeBorderColor);
+}
+
+.contextcompact-save-button {
+    width: max-content;
+    min-width: 6em;
+    white-space: nowrap;
+    writing-mode: horizontal-tb;
+}
+
+.contextcompact-save-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.contextcompact-save-row .contextcompact-status {
+    margin: 0;
+}
+
+.contextcompact-prompt-setting {
+    margin: 0.8em 0;
+}
+
+.contextcompact-prompt-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.35em 0.8em;
+    margin-bottom: 0.35em;
+}
+
+.contextcompact-label-with-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+}
+
+.contextcompact-prompt-setting textarea {
+    width: 100%;
+    margin: 0;
+    resize: vertical;
+}
+
+.contextcompact-prompt-setting small {
+    display: block;
+    margin-top: 0.25em;
+    opacity: 0.75;
+}
+
+#contextcompact_memory_json {
+    font-family: monospace;
+    resize: vertical;
+}
+
+.contextcompact-settings [hidden] {
+    display: none;
+}
+
+.contextcompact-view-toggle {
+    width: max-content;
+    margin-bottom: 0.5em;
+    writing-mode: horizontal-tb;
+}
+
+.contextcompact-memory-heading {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin: 1em 0 0.4em;
+}
+
+.contextcompact-memory-heading h4 {
+    margin: 0;
+}
+
+.contextcompact-memory-token-count {
+    font-size: 0.9em;
+    opacity: 0.75;
+}
+
+.contextcompact-memory-cards {
+    display: grid;
+    gap: 0.6em;
+    margin-bottom: 0.7em;
+}
+
+.contextcompact-memory-card-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.6em;
+}
+
+.contextcompact-memory-card {
+    min-width: 0;
+    padding: 0.65em;
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 0.5em;
+    background: var(--black30a);
+    overflow-wrap: anywhere;
+}
+
+.contextcompact-memory-card h5 {
+    margin: 0 0 0.45em;
+}
+
+.contextcompact-memory-card textarea {
+    width: 100%;
+    margin: 0;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.contextcompact-actions {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.45rem;
+    margin-top: 0.45rem;
+}
+
+.contextcompact-actions .menu_button {
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    writing-mode: horizontal-tb;
+}
+
+.contextcompact-status {
+    min-height: 1.4em;
+    margin: 0.5em 0;
+    white-space: pre-wrap;
+}
+
+.contextcompact-status:empty {
+    display: none;
+}
+
+.contextcompact-status[data-error="true"] {
+    color: var(--SmartThemeQuoteColor);
+}
